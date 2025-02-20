@@ -28,7 +28,7 @@ public class Category extends javax.swing.JFrame {
         while(rc--!=0){
         dtm.removeRow(0);
         }
-        ResultSet rs = db.DbConnect.s.executeQuery("select * from category_info");
+        ResultSet rs = (ResultSet) db.DbConnect.s.executeQuery("select * from category_info");
         int sno=0;
         while(rs.next()){
         String category = rs.getString("category");
@@ -242,9 +242,10 @@ public class Category extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int ri = table.getSelectedRow();
+        if(ri!=-1){
         int r = JOptionPane.showConfirmDialog(null , "Do you really wanna delete?", "Deletion Confirmation",JOptionPane.YES_NO_OPTION);
         if(r==JOptionPane.YES_OPTION){
-            int ri = table.getSelectedRow();
         String category = (String)table.getValueAt(ri, 1);
         try{
        db.DbConnect.s.executeUpdate("delete from category_info where category = '"+category+"'");
@@ -253,7 +254,8 @@ public class Category extends javax.swing.JFrame {
         }
         catch(Exception ex){
         JOptionPane.showMessageDialog(null, ex);
-        }
+                  }
+             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
