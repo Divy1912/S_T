@@ -6,7 +6,7 @@ public class DbConnect {
     public static Statement s;
     static {
         try{
-        c = DriverManager.getConnection("jdbc:mysql://localhost:3306/spendingdb"+"?useSSL=false", "root", "123456");
+        c = DriverManager.getConnection("jdbc:mysql://sql12.freesqldatabase.com/sql12764148"+"?useSSL=false", "sql12764148", "UYXcwAj8L1");
         s = c.createStatement();
         }catch(Exception ex){
         JOptionPane.showMessageDialog(null, ex);
